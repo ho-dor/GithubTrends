@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import com.kunalrai.githubtrends.databinding.ListFragmentBinding
 
 
 class ListFragment : Fragment() {
@@ -16,12 +17,20 @@ class ListFragment : Fragment() {
     }
 
     private lateinit var viewModel: ListViewModel
+    private lateinit var binding: ListFragmentBinding
+    private lateinit var dataList: List<Repo>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.list_fragment, container, false)
+        binding = ListFragmentBinding.inflate(inflater, container, false)
+
+        val adapter = RepositoryAdapter(dataList,context)
+
+        binding.repoList.adapter = adapter
+
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
