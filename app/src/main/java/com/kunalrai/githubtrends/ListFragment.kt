@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.kunalrai.githubtrends.databinding.ListFragmentBinding
 
 
@@ -21,7 +23,8 @@ class ListFragment : Fragment() {
     }
 
     private lateinit var binding: ListFragmentBinding
-    //private lateinit var dataList: List<Repo>
+    lateinit var recyclerView: RecyclerView
+    lateinit var recyclerAdapter: RecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +35,11 @@ class ListFragment : Fragment() {
 
         binding.viewmodel = viewModel
         setHasOptionsMenu(true)
+
+        recyclerView = view!!.findViewById(R.id.rv_repo_list)
+        recyclerAdapter = RecyclerAdapter(context)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = recyclerAdapter
 
         return binding.root
     }
