@@ -16,28 +16,24 @@ class ListFragment : Fragment() {
         fun newInstance() = ListFragment()
     }
 
-    private lateinit var viewModel: ListViewModel
+    private val viewModel: ListViewModel by lazy {
+        ViewModelProviders.of(this).get(ListViewModel::class.java)
+    }
+
     private lateinit var binding: ListFragmentBinding
-    private lateinit var dataList: List<Repo>
+    //private lateinit var dataList: List<Repo>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = ListFragmentBinding.inflate(inflater, container, false)
+        binding.setLifecycleOwner(this)
 
-        val adapter = RepositoryAdapter(dataList,context)
-
-        binding.repoList.adapter = adapter
+        binding.viewmodel = viewModel
+        setHasOptionsMenu(true)
 
         return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(ListViewModel::class.java)
-        // TODO: Use the ViewModel
-
     }
 
 }
