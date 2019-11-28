@@ -23,7 +23,7 @@ class ListFragment : Fragment() {
     }
 
     private lateinit var binding: ListFragmentBinding
-    lateinit var recyclerView: RecyclerView
+    var recyclerView: RecyclerView? = null
     lateinit var recyclerAdapter: RecyclerAdapter
 
     override fun onCreateView(
@@ -36,10 +36,10 @@ class ListFragment : Fragment() {
         binding.viewmodel = viewModel
         setHasOptionsMenu(true)
 
-        recyclerView = view!!.findViewById(R.id.rv_repo_list)
+        recyclerView = view?.findViewById(R.id.rv_repo_list)
         recyclerAdapter = RecyclerAdapter(context)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = recyclerAdapter
+        recyclerView?.layoutManager = LinearLayoutManager(context)
+        recyclerView?.adapter = recyclerAdapter
 
         return binding.root
     }
