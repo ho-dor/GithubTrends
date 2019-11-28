@@ -43,7 +43,7 @@ class RecyclerAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerAdap
         val author: TextView = itemView!!.findViewById(R.id.owner_name)
         val image: ImageView = itemView!!.findViewById(R.id.owner_image)
         val repo: TextView = itemView!!.findViewById(R.id.repo_name)
-        
+
 
     }
 }
