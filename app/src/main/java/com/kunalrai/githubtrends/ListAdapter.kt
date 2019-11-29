@@ -1,15 +1,19 @@
 package com.kunalrai.githubtrends
 
 import android.content.Context
+import android.content.ContextWrapper
+import android.content.SharedPreferences
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.pixplicity.easyprefs.library.Prefs
 
 class ListAdapter(private val context: Context?, private val repoList: List<Repo>) : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
@@ -17,13 +21,13 @@ class ListAdapter(private val context: Context?, private val repoList: List<Repo
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
         val view = LayoutInflater.from(parent.context).inflate(R.layout.repo_item,parent,false)
-        return MyViewHolder(view)
+        return MyViewHolder(view,this)
     }
 
     override fun getItemCount(): Int {
-        Log.i("reposize: ",""+repoList.size)
         return repoList.size
     }
+
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
@@ -36,12 +40,33 @@ class ListAdapter(private val context: Context?, private val repoList: List<Repo
             .into(holder.image)
     }
 
-    class MyViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
+    class MyViewHolder(itemView: View?, listAdapter: ListAdapter) : RecyclerView.ViewHolder(itemView!!) {
 
         val author: TextView = itemView!!.findViewById(R.id.owner_name)
         val image: ImageView = itemView!!.findViewById(R.id.owner_image)
         val repo: TextView = itemView!!.findViewById(R.id.repo_name)
 
+        init {
+            itemView!!.setOnClickListener(View.OnClickListener {
+                val pos = adapterPosition
 
+                Prefs.Builder()
+                    .setContext(itemView.context)
+                    .setMode(ContextWrapper.MODE_PRIVATE)
+                    .setPrefsName("trending")
+                    .setUseDefaultSharedPreference(true)
+                    .build()
+
+                Prefs.putString("author",listAdapter.repoList[pos].author)
+                Prefs.putString("name", listAdapter.repoList[pos].name)
+                Prefs.putString("stars", listAdapter.repoList[pos].stars)
+                Prefs.putString("forks", listAdapter.repoList[pos].forks)
+                Prefs.putString("desc", listAdapter.repoList[pos].desc)
+                Prefs.putString("avatar", listAdapter.repoList[pos].avatar)
+                Prefs.putString("language", listAdapter.repoList[pos].language)
+
+                itemView.findNavController().navigate(R.id.action_listFragment_to_detailsFragment)
+            })
+        }
     }
 }

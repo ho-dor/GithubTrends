@@ -31,14 +31,6 @@ class ListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-//        viewModel.getRepos().observe(this,
-//            Observer<List<Repo>> {
-//                it?.let { repoList ->
-//                    this.repoList = repoList
-//                    Log.i("inside observe",""+repoList)
-//                }
-//            })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
