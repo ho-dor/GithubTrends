@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class RecyclerAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>() {
+class RecyclerAdapter(private val context: Context?,private val repoList: List<Repo>) : RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>() {
 
-    var repoList : List<Repo> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
@@ -26,16 +25,13 @@ class RecyclerAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerAdap
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        holder.author.text = repoList.get(position).author
-        holder.repo.text = repoList.get(position).name
-        Glide.with(context!!).load(repoList.get(position).avatar)
+        holder.author.text = repoList[position].author
+
+        holder.repo.text = repoList[position].name
+
+        Glide.with(context!!).load(repoList[position].avatar)
             .apply(RequestOptions().centerCrop())
             .into(holder.image)
-    }
-
-    fun setRepoListItems(repoList: List<Repo>){
-        this.repoList = repoList
-        notifyDataSetChanged()
     }
 
     class MyViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
