@@ -1,6 +1,7 @@
 package com.kunalrai.githubtrends
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ class ListAdapter(private val context: Context?, private val repoList: List<Repo
     }
 
     override fun getItemCount(): Int {
+        Log.i("reposize: ",""+repoList.size)
         return repoList.size
     }
 

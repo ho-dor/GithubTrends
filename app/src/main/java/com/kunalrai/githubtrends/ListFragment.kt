@@ -27,6 +27,18 @@ class ListFragment : Fragment() {
     lateinit var listAdapter: ListAdapter
     var repoList: List<Repo>? = null
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getRepos().observe(this,
+            Observer<List<Repo>> {
+                it?.let { repoList ->
+                    listAdapter = ListAdapter(context, repoList)
+                    recyclerView?.adapter = listAdapter
+                }
+            })
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,14 +52,6 @@ class ListFragment : Fragment() {
         recyclerView = view?.findViewById(R.id.rv_repo_list)
         recyclerView?.layoutManager = LinearLayoutManager(context)
         recyclerView?.setHasFixedSize(true)
-
-        viewModel.getRepos().observe(this,
-            Observer<List<Repo>> {
-                it?.let { repoList ->
-                    listAdapter = ListAdapter(context, repoList)
-                    recyclerView?.adapter = listAdapter
-                }
-            })
 
 
         return binding.root

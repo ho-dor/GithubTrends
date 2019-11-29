@@ -8,7 +8,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ListViewModel : ViewModel() {
-    lateinit var repoList: MutableLiveData<List<Repo>>
+    var repoList: MutableLiveData<List<Repo>> = MutableLiveData(listOf())
 
     fun getRepos(): MutableLiveData<List<Repo>>{
 
@@ -26,8 +26,8 @@ class ListViewModel : ViewModel() {
 
             override fun onResponse(call: Call<List<Repo>>, response: Response<List<Repo>>) {
                 if(response.body() != null){
-                    repoList.value = response.body()!!
-                    Log.i("response.body :",""+response.body()!!)
+                    repoList.value = response.body()
+                    Log.i("response.body :",""+response.body())
                 }
 
             }
