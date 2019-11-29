@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,7 +24,7 @@ class ListFragment : Fragment() {
 
     private lateinit var binding: ListFragmentBinding
     var recyclerView: RecyclerView? = null
-    lateinit var recyclerAdapter: RecyclerAdapter
+    lateinit var listAdapter: ListAdapter
     var repoList: List<Repo>? = null
 
     override fun onCreateView(
@@ -43,9 +42,11 @@ class ListFragment : Fragment() {
         recyclerView?.setHasFixedSize(true)
 
         viewModel.getRepos().observe(this,
-            Observer<List<Repo>> { repoList ->
-                recyclerAdapter = RecyclerAdapter(context, repoList!!)
-                recyclerView!!.adapter = recyclerAdapter
+            Observer<List<Repo>> {
+                it?.let { repoList ->
+                    listAdapter = ListAdapter(context, repoList)
+                    recyclerView?.adapter = listAdapter
+                }
             })
 
 

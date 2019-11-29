@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class RecyclerAdapter(private val context: Context?,private val repoList: List<Repo>) : RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>() {
+class ListAdapter(private val context: Context?, private val repoList: List<Repo>) : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
