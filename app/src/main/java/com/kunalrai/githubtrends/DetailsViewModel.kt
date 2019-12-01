@@ -13,5 +13,6 @@ class DetailsViewModel : ViewModel() {
     lateinit var desc: String
     lateinit var stars: String
     lateinit var forks: String
+    lateinit var avatar: String
 
 }

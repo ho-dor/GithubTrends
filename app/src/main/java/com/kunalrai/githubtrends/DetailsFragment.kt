@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.kunalrai.githubtrends.databinding.DetailsFragmentBinding
 import com.kunalrai.githubtrends.databinding.ListFragmentBinding
 import com.pixplicity.easyprefs.library.Prefs
@@ -48,6 +50,11 @@ class DetailsFragment : Fragment() {
         viewModel.language = Prefs.getString("language", "N/A")
         viewModel.stars = Prefs.getString("stars", "N/A")
         viewModel.forks = Prefs.getString("forks", "N/A")
+        viewModel.avatar = Prefs.getString("avatar","")
+
+        Glide.with(context!!).load(viewModel.avatar)
+            .apply(RequestOptions().centerCrop())
+            .into(binding.ownerImageDetails)
 
         return binding.root
     }
