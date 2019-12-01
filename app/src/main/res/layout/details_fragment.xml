@@ -28,6 +28,9 @@
         <TextView
             android:id="@+id/owner_name_details"
             android:layout_width="match_parent"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:layout_height="wrap_content"
             android:layout_below="@+id/owner_image_details"
             android:layout_marginBottom="424dp"
@@ -41,6 +44,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/owner_name_details"
             android:layout_marginBottom="328dp"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:text="@{viewmodel.repo_name}"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="0dp" />
@@ -52,6 +58,9 @@
             android:layout_below="@+id/repo_name_details"
             android:layout_marginTop="488dp"
             android:layout_marginBottom="224dp"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:text="@{viewmodel.desc}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -59,10 +68,13 @@
 
         <TextView
             android:id="@+id/repo_lang"
-            android:layout_width="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/owner_name_desc"
             android:text="@{viewmodel.language}"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toTopOf="@+id/owner_name_details"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,10 +82,11 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="47dp"
-            android:layout_height="61dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="67dp"
             android:layout_marginEnd="88dp"
+            android:src="@mipmap/star_yellow_16"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/repo_stars"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,10 +96,13 @@
 
         <TextView
             android:id="@+id/repo_stars"
-            android:layout_width="50dp"
-            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/repo_lang"
             android:layout_marginStart="28dp"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:text="@{viewmodel.stars}"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -95,9 +111,9 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="56dp"
-            android:layout_height="63dp"
-            android:src=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/fork_black_16"
             app:layout_constraintBottom_toBottomOf="@+id/repo_stars"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.486"
@@ -107,10 +123,13 @@
 
         <TextView
             android:id="@+id/repo_forks"
-            android:layout_width="45dp"
-            android:layout_height="67dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/repo_stars"
             android:text="@{viewmodel.forks}"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.354"
