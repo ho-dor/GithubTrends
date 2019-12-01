@@ -15,8 +15,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.pixplicity.easyprefs.library.Prefs
 
-class ListAdapter(private val context: Context?, private val repoList: List<Repo>) : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
+class ListAdapter(private val context: Context?) : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
+    private var repoList: ArrayList<Repo> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
@@ -25,7 +26,14 @@ class ListAdapter(private val context: Context?, private val repoList: List<Repo
     }
 
     override fun getItemCount(): Int {
+        Log.i("size of list adapter",""+repoList.size)
         return repoList.size
+    }
+
+    fun swapData(repo: List<Repo>){
+        this.repoList.clear()
+        this.repoList.addAll(repo)
+        notifyDataSetChanged()
     }
 
 
@@ -38,6 +46,8 @@ class ListAdapter(private val context: Context?, private val repoList: List<Repo
         Glide.with(context!!).load(repoList[position].avatar)
             .apply(RequestOptions().centerCrop())
             .into(holder.image)
+
+        Log.i("onBindViewHolder","binding done")
     }
 
     class MyViewHolder(itemView: View?, listAdapter: ListAdapter) : RecyclerView.ViewHolder(itemView!!) {

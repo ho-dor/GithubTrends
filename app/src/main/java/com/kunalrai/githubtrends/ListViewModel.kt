@@ -11,7 +11,7 @@ class ListViewModel : ViewModel() {
     var repoList: MutableLiveData<List<Repo>> = MutableLiveData(listOf())
 
     fun getRepos(): MutableLiveData<List<Repo>>{
-
+        Log.i("viewModel","getRepos")
             repoList = MutableLiveData()
             loadRepos()
 
@@ -19,6 +19,7 @@ class ListViewModel : ViewModel() {
     }
 
     private fun loadRepos() {
+        Log.i("viewModel","loadRepos")
         Api.RETROFIT_SERVICE.getRepos().enqueue( object: Callback<List<Repo>> {
             override fun onFailure(call: Call<List<Repo>>, t: Throwable) {
                 Log.i("Failure: ", t.message)
