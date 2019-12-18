@@ -3,4 +3,8 @@
     <dimen name="padding_rv">5dp</dimen>
     <dimen name="margin_image">4dp</dimen>
     <dimen name="margin_vertical">5dp</dimen>
+    <dimen name="activityPadding">16dp</dimen>
+    <dimen name="placeholderImage">60dp</dimen>
+    <dimen name="placeholderTextHeight">8dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
 </resources>

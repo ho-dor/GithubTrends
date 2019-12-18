@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.kunalrai.githubtrends.databinding.ListFragmentBinding
 
 
@@ -29,7 +30,6 @@ class ListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.i("fragment","oncreateview")
         binding = ListFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner
 
@@ -43,6 +43,8 @@ class ListFragment : Fragment() {
             it.adapter = listAdapter //we add the adapter here
         }
 
+        binding.shimmerViewContainer.startShimmer()
+
         return binding.root
     }
 
@@ -54,8 +56,17 @@ class ListFragment : Fragment() {
                 it?.let { repoList ->
                     Log.i("data",""+repoList.size)
                     listAdapter.swapData(repoList)
+                    binding.shimmerViewContainer.stopShimmer()
+                    binding.shimmerViewContainer.visibility = View.GONE
                 }
             })
+        //binding.shimmerViewContainer.stopShimmer()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.shimmerViewContainer.stopShimmer()
+        binding.shimmerViewContainer.visibility = View.GONE
     }
 
 }
