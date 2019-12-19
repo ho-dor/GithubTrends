@@ -1,9 +1,6 @@
 package com.kunalrai.githubtrends
 
-import android.content.ContextWrapper
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.pixplicity.easyprefs.library.Prefs
 
 class DetailsViewModel : ViewModel() {
 

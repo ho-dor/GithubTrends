@@ -1,6 +1,8 @@
 package com.kunalrai.githubtrends
 
 import android.content.ContextWrapper
+import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -55,6 +57,12 @@ class DetailsFragment : Fragment() {
         Glide.with(context!!).load(viewModel.avatar)
             .apply(RequestOptions().centerCrop())
             .into(binding.ownerImageDetails)
+
+        binding.button.setOnClickListener(View.OnClickListener {
+            var uri: Uri = Uri.parse("https://github.com/${viewModel.author}/${viewModel.repo_name}")
+            var intent: Intent = Intent(Intent.ACTION_VIEW,uri)
+            startActivity(intent)
+        })
 
         return binding.root
     }

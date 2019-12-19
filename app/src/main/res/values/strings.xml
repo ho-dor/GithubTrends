@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GithubTrends</string>
+    <string name="link_to_repo">Link to Github Repo</string>
+    <string name="github_repo">Github Repo</string>
 </resources>
