@@ -18,84 +18,105 @@
             android:id="@+id/owner_image_details"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="32dp"
             app:civ_border_color="#FF000000"
             app:civ_border_width="2dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.085"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/owner_name_details"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:textColor="#000000"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/owner_image_details"
-            android:layout_marginBottom="424dp"
+            android:gravity="center"
             android:maxLines="1"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:text="@{viewmodel.author}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="0dp" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/owner_image_details"
+            app:layout_constraintTop_toBottomOf="@+id/repo_lang" />
 
         <TextView
             android:id="@+id/repo_name_details"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/owner_name_details"
-            android:layout_marginBottom="328dp"
             android:gravity="center"
-            android:textColor="#000000"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:text="@{viewmodel.repo_name}"
             android:maxLines="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="0dp" />
+            android:layout_marginTop="10dp"
+            android:text="@{viewmodel.repo_name}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#a0a0a0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/owner_image_details"
+            app:layout_constraintTop_toBottomOf="@+id/owner_name_details" />
+
+        <TextView
+            android:id="@+id/desc_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/desc"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/owner_name_desc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/owner_image_details"
+            app:layout_constraintVertical_bias="0.692" />
 
         <TextView
             android:id="@+id/owner_name_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/repo_name_details"
-            android:layout_marginTop="488dp"
-            android:layout_marginBottom="224dp"
+            android:layout_marginBottom="200dp"
             android:gravity="center"
-            android:textColor="#000000"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:text="@{viewmodel.desc}"
             android:maxLines="4"
+            android:text="@{viewmodel.desc}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/owner_image_details"
+            app:layout_constraintVertical_bias="0.756" />
 
         <TextView
             android:id="@+id/repo_lang"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/owner_name_desc"
-            android:text="@{viewmodel.language}"
+            android:layout_marginTop="32dp"
             android:gravity="center"
-            android:textColor="#000000"
+            android:text="@{viewmodel.language}"
+            android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintBottom_toTopOf="@+id/owner_name_details"
+            android:textColor="#f00"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/owner_image_details" />
+            app:layout_constraintStart_toEndOf="@id/owner_image_details"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="58dp"
-            android:layout_height="45dp"
+            android:layout_width="45dp"
+            android:layout_height="34dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="67dp"
             android:layout_marginEnd="88dp"
             android:src="@mipmap/star_yellow_16"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toStartOf="@+id/repo_stars"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/owner_name_desc"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/owner_name_desc" />
 
         <TextView
             android:id="@+id/repo_stars"
@@ -117,22 +138,21 @@
             android:layout_width="54dp"
             android:layout_height="38dp"
             android:src="@mipmap/fork_black_16"
-            app:layout_constraintBottom_toBottomOf="@+id/repo_stars"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.56"
+            app:layout_constraintHorizontal_bias="0.598"
             app:layout_constraintStart_toEndOf="@+id/repo_stars"
-            app:layout_constraintTop_toTopOf="@+id/repo_stars"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
 
         <TextView
             android:id="@+id/repo_forks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/repo_stars"
-            android:text="@{viewmodel.forks}"
             android:gravity="center"
-            android:textColor="#000000"
+            android:text="@{viewmodel.forks}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.354"
@@ -144,28 +164,28 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/github_repo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:contentDescription="@string/link_to_repo"
-            android:layout_marginBottom="10dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="16dp"
             android:background="#000000"
-            android:textColor="#ffffff"
+            android:contentDescription="@string/link_to_repo"
             android:elevation="50dp"
+            android:text="@string/github_repo"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#ffffff"
             android:textStyle="bold"
-            tools:layout_editor_absoluteY="664dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <View
+            android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+            android:background="#ffffff"
             app:layout_constraintTop_toBottomOf="@id/button"
-            android:background="#ffffff"/>
+            tools:layout_editor_absoluteX="20dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
