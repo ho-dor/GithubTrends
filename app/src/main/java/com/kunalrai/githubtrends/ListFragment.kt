@@ -2,7 +2,6 @@ package com.kunalrai.githubtrends
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.facebook.shimmer.ShimmerFrameLayout
 import com.kunalrai.githubtrends.databinding.ListFragmentBinding
 
 
@@ -62,7 +60,6 @@ class ListFragment : Fragment() {
         viewModel.getRepos().observe(this,
             Observer<List<Repo>> {
                 it?.let { repoList ->
-                    Log.i("data",""+repoList.size)
                     listAdapter.swapData(repoList)
                     binding.swipeRefresh.isRefreshing = false
                     binding.shimmerViewContainer.stopShimmer()

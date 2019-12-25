@@ -2,7 +2,6 @@ package com.kunalrai.githubtrends
 
 import android.content.Context
 import android.content.ContextWrapper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +24,6 @@ class ListAdapter(private val context: Context?) : RecyclerView.Adapter<ListAdap
     }
 
     override fun getItemCount(): Int {
-        Log.i("size of list adapter",""+repoList.size)
         return repoList.size
     }
 
@@ -45,8 +43,6 @@ class ListAdapter(private val context: Context?) : RecyclerView.Adapter<ListAdap
         Glide.with(context!!).load(repoList[position].avatar)
             .apply(RequestOptions().centerCrop())
             .into(holder.image)
-
-        Log.i("onBindViewHolder","binding done")
     }
 
     class MyViewHolder(itemView: View?, listAdapter: ListAdapter) : RecyclerView.ViewHolder(itemView!!) {
